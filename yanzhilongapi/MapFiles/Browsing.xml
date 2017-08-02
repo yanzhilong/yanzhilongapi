@@ -15,6 +15,7 @@
     <resultMap id="BrowsingResult" class="Browsing">
       <result property="Id" column="Id" dbType="char" type="string" />
       <result property="Url" column="Url" dbType="varchar" type="string" />
+      <result property="Browser" column="Browser" dbType="varchar" type="string" />
       <result property="CreateDate" column="CreateDate" dbType="datetime" type="DateTime" />
       <result property="UserId" column="UserId" dbType="char" type="string" />
       <result property="Tag" column="Tag" dbType="char" type="string" />
@@ -31,9 +32,9 @@
     <insert id="InsertBrowsing" parameterClass="Browsing" >
       <![CDATA[  
       insert into Browsing  
-      (Id,Url,CreateDate,UserId,Tag)  
+      (Id,Url,Browser,CreateDate,UserId,Tag)  
       values  
-      (#Id#,#Url#,#CreateDate#,#UserId#,#Tag#)  
+      (#Id#,#Url#,#Browser#,#CreateDate#,#UserId#,#Tag#)  
       ]]>
     </insert>
 
@@ -51,6 +52,7 @@
       <![CDATA[  
           UPDATE Browsing SET  
           Url=#Url#,
+          Browser=#Browser#,
           CreateDate=#CreateDate#,
           UserId=#UserId#,
           Tag=#Tag#
@@ -64,6 +66,7 @@
           SELECT 
           Id
           ,Url
+          ,Browser
           ,CreateDate
           ,UserId
           ,Tag
