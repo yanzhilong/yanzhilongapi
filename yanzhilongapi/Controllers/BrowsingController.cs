@@ -47,6 +47,7 @@ namespace yanzhilong.Controllers
             Browsing b = new Browsing
             {
                 Id = browsing.Id,
+                Title = browsing.Title,
                 Url = browsing.Url,
                 Browser = browsing.Browser,
                 CreateDate = DateTime.Now,
