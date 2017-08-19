@@ -49,7 +49,7 @@ namespace yanzhilong.Controllers
                 Id = browsing.Id,
                 Url = browsing.Url,
                 Browser = browsing.Browser,
-                CreateDate = browsing.CreateDate,
+                CreateDate = DateTime.Now,
                 Tag = browsing.Tag,
                 UserId = browsing.UserId
             };
