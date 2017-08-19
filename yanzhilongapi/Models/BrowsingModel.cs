@@ -17,6 +17,11 @@ namespace yanzhilongapi.Models
         public string Id { get; set; }
 
         /// <summary>
+        /// 标题
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
         /// 网址
         /// </summary>
         public string Url { get; set; }

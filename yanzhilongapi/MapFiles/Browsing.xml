@@ -14,11 +14,13 @@
     <!-- 数据库的全部字段到实体类的映射 -->
     <resultMap id="BrowsingResult" class="Browsing">
       <result property="Id" column="Id" dbType="char" type="string" />
+      <result property="Title" column="Title" dbType="varchar" type="string" />
       <result property="Url" column="Url" dbType="varchar" type="string" />
+      <result property="Browser" column="Browser" dbType="varchar" type="string" />
       <result property="CreateDate" column="CreateDate" dbType="datetime" type="DateTime" />
       <result property="UserId" column="UserId" dbType="char" type="string" />
       <result property="Tag" column="Tag" dbType="char" type="string" />
-
+      
     </resultMap>
 
   </resultMaps>
@@ -31,9 +33,9 @@
     <insert id="InsertBrowsing" parameterClass="Browsing" >
       <![CDATA[  
       insert into Browsing  
-      (Id,Url,CreateDate,UserId,Tag)  
+      (Id,Title,Url,Browser,CreateDate,UserId,Tag)  
       values  
-      (#Id#,#Url#,#CreateDate#,#UserId#,#Tag#)  
+      (#Id#,#Title#,#Url#,#Browser#,#CreateDate#,#UserId#,#Tag#)  
       ]]>
     </insert>
 
@@ -50,7 +52,9 @@
     <update id="UpdateBrowsing" parameterClass="Browsing">
       <![CDATA[  
           UPDATE Browsing SET  
+          Title=#Title#,
           Url=#Url#,
+          Browser=#Browser#,
           CreateDate=#CreateDate#,
           UserId=#UserId#,
           Tag=#Tag#
@@ -63,7 +67,9 @@
       <![CDATA[  
           SELECT 
           Id
+          ,Title
           ,Url
+          ,Browser
           ,CreateDate
           ,UserId
           ,Tag
@@ -77,6 +83,11 @@
         <isNotEmpty prepend="AND" property="Id">
           <![CDATA[  
            Id = #Id#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Title">
+          <![CDATA[  
+           Title = #Title#
             ]]>
         </isNotEmpty>
         <isNotEmpty prepend="AND" property="UserId">
