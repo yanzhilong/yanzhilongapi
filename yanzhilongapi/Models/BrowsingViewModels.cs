@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace yanzhilongapi.Models
 {
-
     /// <summary>
     /// 浏览历史实体
     /// </summary>
-    public class BrowsingModel
+    public class BrowsingViewModel
     {
         /// <summary>
         /// 编号
@@ -39,11 +39,13 @@ namespace yanzhilongapi.Models
         /// <summary>
         /// 用户编号
         /// </summary>
+        [Required(ErrorMessage = "用户编号必须要")]
         public string UserId { get; set; }
 
         /// <summary>
-        /// 标签
+        /// 标签，用于区分当前用户的多个客户端
         /// </summary>
+        [StringLength(100, ErrorMessage = "{0} 字段至少需要{2}个字符", MinimumLength = 6)]
         public string Tag { get; set; }
     }
 }
