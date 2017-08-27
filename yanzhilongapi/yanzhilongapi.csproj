@@ -272,10 +272,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Autofac.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\JDAutoController.cs" />
+    <Compile Include="Controllers\JDPropertiesController.cs" />
     <Compile Include="Controllers\BrowsingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Domain\Browsing.cs" />
+    <Compile Include="Domain\JdAuto.cs" />
+    <Compile Include="Domain\JdAutoPropertyValue.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\UserLoginResult.cs" />
     <Compile Include="Domain\UserLoginResultEnum.cs" />
@@ -284,7 +288,9 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\JDPropertyViewModels.cs" />
     <Compile Include="Models\BrowsingViewModels.cs" />
+    <Compile Include="Models\JDAutoViewModels.cs" />
     <Compile Include="Models\BrowsingBindingModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -295,6 +301,8 @@
     <Compile Include="Security\SaltedHash.cs" />
     <Compile Include="Service\BrowsingService.cs" />
     <Compile Include="Service\IBaseService.cs" />
+    <Compile Include="Service\JdAutoService.cs" />
+    <Compile Include="Service\JdAutoPropertyValueService.cs" />
     <Compile Include="Service\UserRegistResult.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Startup.cs" />
@@ -309,6 +317,8 @@
     <Content Include="Global.asax" />
     <EmbeddedResource Include="MapFiles\User.xml" />
     <EmbeddedResource Include="MapFiles\Browsing.xml" />
+    <EmbeddedResource Include="MapFiles\JdAuto.xml" />
+    <EmbeddedResource Include="MapFiles\JdAutoPropertyValue.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -365,6 +375,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="SqlMap.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup />

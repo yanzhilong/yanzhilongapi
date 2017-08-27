@@ -75,7 +75,8 @@ namespace yanzhilongapi
             builder.RegisterGeneric(typeof(MbRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 
             builder.RegisterType<BrowsingService>();
-            
+            builder.RegisterType<JdAutoService>();
+            builder.RegisterType<JdAutoPropertyValueService>();
         }
     }
 }

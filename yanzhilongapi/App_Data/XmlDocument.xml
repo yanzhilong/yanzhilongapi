@@ -487,6 +487,26 @@
             </summary>
             <param name="builder"></param>
         </member>
+        <member name="T:yanzhilongapi.Models.JDPropertyViewModels">
+            <summary>
+            填单属性实体
+            </summary>
+        </member>
+        <member name="P:yanzhilongapi.Models.JDPropertyViewModels.PropertyKey">
+            <summary>
+            属性key
+            </summary>
+        </member>
+        <member name="P:yanzhilongapi.Models.JDPropertyViewModels.ValueValue">
+            <summary>
+            属性值
+            </summary>
+        </member>
+        <member name="P:yanzhilongapi.Models.JDPropertyViewModels.IsCheck">
+            <summary>
+            是否是check
+            </summary>
+        </member>
         <member name="T:yanzhilongapi.Models.BrowsingViewModel">
             <summary>
             浏览历史实体
@@ -525,6 +545,21 @@
         <member name="P:yanzhilongapi.Models.BrowsingViewModel.Tag">
             <summary>
             标签，用于区分当前用户的多个客户端
+            </summary>
+        </member>
+        <member name="T:yanzhilongapi.Models.JDAutoViewModels">
+            <summary>
+            京东填单实体
+            </summary>
+        </member>
+        <member name="P:yanzhilongapi.Models.JDAutoViewModels.Id">
+            <summary>
+            编号
+            </summary>
+        </member>
+        <member name="P:yanzhilongapi.Models.JDAutoViewModels.Name">
+            <summary>
+            标题
             </summary>
         </member>
         <member name="T:yanzhilongapi.Models.CreateBrowsingBindingModel">
@@ -591,6 +626,29 @@
             <summary>
             标签，用于区分当前用户的多个客户端
             </summary>
+        </member>
+        <member name="T:yanzhilong.Controllers.JDAutoController">
+            <summary>
+            浏览记录接口
+            </summary>
+        </member>
+        <member name="M:yanzhilong.Controllers.JDAutoController.GetJdAutos">
+            <summary>
+            获得浏览记录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:yanzhilong.Controllers.JDPropertiesController">
+            <summary>
+            京东自填写属性接口
+            </summary>
+        </member>
+        <member name="M:yanzhilong.Controllers.JDPropertiesController.GetJDProperties(System.String)">
+            <summary>
+            获得指定填单的属性列表
+            </summary>
+            <param name="JDAutoId"></param>
+            <returns></returns>
         </member>
         <member name="T:yanzhilong.Controllers.BrowsingController">
             <summary>
