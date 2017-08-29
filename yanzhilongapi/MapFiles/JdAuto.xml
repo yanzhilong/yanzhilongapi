@@ -9,13 +9,14 @@
 
   <!-- 数据库到实体类的映射表 -->
   <resultMaps>
-    
+
     <!-- 数据库的全部字段到实体类的映射 -->
     <resultMap id="JdAutoResult" class="JdAuto">
       <result property="Id" column="Id" dbType="char" type="string" />
       <result property="Name" column="Name" dbType="varchar" type="string" />
+      <result property="PId" column="PId" dbType="char" type="string" />
     </resultMap>
-    
+
   </resultMaps>
 
   <!-- 声明执行语句列表，可以包含多个<select>、<insert>、<update>、<delete>节点 -->
@@ -26,9 +27,9 @@
     <insert id="InsertJdAuto" parameterClass="JdAuto" >
       <![CDATA[  
       insert into jd_auto  
-      (Id,Name)  
+      (Id,Name,PId)  
       values  
-      (#Id#,#Name#)  
+      (#Id#,#Name#,#PId#)  
       ]]>
     </insert>
 
@@ -40,22 +41,24 @@
           Id = #Id#  
           ]]>
     </delete>
-    
+
     <!-- #UserName# 表示传入实体类参数的属性，表示实体的的属性 -->
     <update id="UpdateJdAuto" parameterClass="JdAuto">
       <![CDATA[  
           UPDATE jd_auto SET  
-          Name=#Name#
+          Name=#Name#,
+          PId=#PId#
           WHERE  
           Id=#Id#
           ]]>
     </update>
-    
-     <!--resultMap="SelectAllResult"表示数据库字段与实体类的映射关系和上面配置的SelectAllResult一样--> 
+
+    <!--resultMap="SelectAllResult"表示数据库字段与实体类的映射关系和上面配置的SelectAllResult一样-->
     <select id="SelectJdAutoByCondition" parameterClass="JdAuto" resultMap="JdAutoResult">
       <![CDATA[  
           SELECT Id
           ,Name
+          ,PId
           FROM jd_auto
           ]]>
       <dynamic prepend="WHERE">
@@ -71,7 +74,7 @@
         </isNotEmpty>
       </dynamic>
     </select>
-    
+
   </statements>
 
 </sqlMap>

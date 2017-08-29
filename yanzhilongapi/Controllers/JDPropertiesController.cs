@@ -19,10 +19,13 @@ namespace yanzhilong.Controllers
     public class JDPropertiesController : ApiController
     {
         private readonly JdAutoPropertyValueService _JdAutoPropertyValueService;
+        private readonly JdAutoService _JdAutoService;
 
-        public JDPropertiesController(JdAutoPropertyValueService JdAutoPropertyValueService)
+
+        public JDPropertiesController(JdAutoPropertyValueService JdAutoPropertyValueService, JdAutoService JdAutoService)
         {
             _JdAutoPropertyValueService = JdAutoPropertyValueService;
+            _JdAutoService = JdAutoService;
         }
         
 
@@ -41,7 +44,23 @@ namespace yanzhilong.Controllers
             if (!Guid.TryParse(Id,out guid)){
                 return NotFound();
             }
-            List<JdAutoPropertyValue> JdAutoPropertyValues = _JdAutoPropertyValueService.GetEntrys(new JdAutoPropertyValue { JdAutoId = Id }).ToList();
+            JdAuto ja = _JdAutoService.GetEntry(new JdAuto { Id = Id });
+            if(ja == null)
+            {
+                return NotFound();
+            }
+            List<JdAutoPropertyValue> JdAutoPropertyValues = new List<JdAutoPropertyValue>();
+            List<JdAutoPropertyValue> pjpvs = new List<JdAutoPropertyValue>();
+            List<JdAutoPropertyValue> jpvs = _JdAutoPropertyValueService.GetEntrys(new JdAutoPropertyValue { JdAutoId = Id }).ToList();
+
+            if (!string.IsNullOrEmpty(ja.PId))
+            {
+                List<JdAutoPropertyValue> tmpjpv = _JdAutoPropertyValueService.GetEntrys(new JdAutoPropertyValue { JdAutoId = ja.PId }).ToList();
+                pjpvs.AddRange(tmpjpv);
+            }
+            JdAutoPropertyValues.AddRange(pjpvs);
+            JdAutoPropertyValues.AddRange(jpvs);
+            
             List<JDPropertyViewModels> JDPropertyViewModels = new List<JDPropertyViewModels>();
             foreach (JdAutoPropertyValue j in JdAutoPropertyValues)
             {
